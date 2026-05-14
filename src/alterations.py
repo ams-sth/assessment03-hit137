@@ -15,9 +15,7 @@ class Alteration(Protocol):
 
     def apply(self, image_bgr: np.ndarray, rect: Rect) -> None:
         """Apply an in-place alteration to `image_bgr` within `rect`.
-        Must use OpenCV operations.
         """
-
 
 class BaseAlteration:
     """
@@ -117,8 +115,6 @@ class SwapHalvesAlteration(BaseAlteration):
         image_bgr[rect.y : rect.y + bottom.shape[0], rect.x : rect.x2] = bottom
         image_bgr[rect.y + bottom.shape[0] : rect.y2, rect.x : rect.x2] = top
 
-
-# Full roster
 DEFAULT_ALTERATIONS: list[Alteration] = [
     BlurAlteration(),
     NoiseAlteration(),
